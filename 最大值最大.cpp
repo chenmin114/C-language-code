@@ -1,29 +1,30 @@
 #include <stdio.h>
-long long a[100005];
+int c[100005];
 
-int main()
+int main() 
 {
-	int n,m;
-	long long max=0;
-	scanf("%d %d",&n,&m);
-	for (int i=0;i<n;i++)
+    int n, m;
+    scanf("%d %d",&n,&m);
+    int max=0;
+    for (int i=0;i<n;i++) 
 	{
-		scanf("%lld",&a[i]);
-		if (max<a[i]) max=a[i];
-	}
-	long long x;
-	if (n>1){
-	    for (int i=0;i<m;i++){
-		    scanf("%lld",&x);
-		    if (x>0) max+=x;
-	    }
-	}
-	else {
-		for (int i=0;i<m;i++){
-		    scanf("%lld",&x);
-		}
-		    max+=x;
-	}
-	printf("%lld",max);
-	return 0;
+        scanf("%d",&c[i]);
+        if (c[i]>max) max=c[i];
+    }
+    long long sumall=0;
+    long long sumpos=0;
+    for (int j=0;j<m;j++) 
+	{
+        int a;
+        scanf("%d",&a);
+        sumall+=a;
+        if (a>0) sumpos+=a;
+    }
+    
+    if (n==1) 
+	{
+        printf("%lld\n",c[0]+sumall);
+    } 
+	else printf("%lld\n",max+sumpos);
+    return 0;
 }
